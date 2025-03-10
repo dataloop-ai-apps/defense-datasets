@@ -199,6 +199,5 @@ class MilitaryAssetsDataset(dl.BaseServiceRunner):
         :param feature_set: The feature set to which the feature will be added.
         """
 
-        source_item: dl.Item = dl.Item.from_json(_json=source_item_json_data, client_api=dl.client_api)
-        target_item = dataset.items.get(filepath=source_item.filename)
+        target_item: dl.Item = dataset.items.get(filepath=source_item_json_data["filename"])
         feature_set.features.create(entity=target_item, value=source_item_json_data["itemVectors"][0]["value"])
