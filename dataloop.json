@@ -1,0 +1,77 @@
+{
+  "displayName": "Military Assets Dataset (12 Classes -Yolo8 Format)",
+  "name": "military-assets-dataset",
+  "description": "A sample of 200 items from Military Assets Dataset (12 Classes -Yolo8 Format). This dataset is curated for object detection and classification in military-related environments.",
+  "scope": "public",
+  "codebase": {
+    "type": "git",
+    "gitUrl": "https://github.com/dataloop-ai-apps/defense-datasets.git",
+    "gitTag": "0.0.0"
+  },
+  "version": "0.0.0",
+  "attributes": {
+    "Provider": "Dataloop",
+    "Category": "Dataset",
+    "License": "CC BY 4.0"
+  },
+  "components": {
+    "computeConfigs": [
+      {
+        "name": "dataset-deploy",
+        "secrets": [],
+        "runtime": {
+          "podType": "regular-m",
+          "concurrency": 1,
+          "autoscaler": {
+            "type": "rabbitmq",
+            "minReplicas": 0,
+            "maxReplicas": 2,
+            "queueLength": 1000
+          },
+          "preemptible": false
+        }
+      }
+    ],
+    "modules": [
+      {
+        "name": "dataset_adapter",
+        "entryPoint": "dataset_loader.py",
+        "className": "MilitaryAssetsDataset",
+        "description": "Dataset adapter",
+        "initInputs": [],
+        "functions": [
+          {
+            "name": "upload_dataset",
+            "input": [
+              {
+                "type": "Dataset",
+                "name": "dataset",
+                "description": "Dataloop Dataset Entity"
+              },
+              {
+                "type": "String",
+                "name": "source",
+                "description": "Dataset source URL"
+              }
+            ],
+            "output": [],
+            "displayName": "upload_dataset",
+            "displayIcon": "",
+            "description": "function to upload dataset to Dataloop"
+          }
+        ]
+      }
+    ],
+    "datasets": [
+      {
+        "name": "Military Assets Dataset",
+        "docs": "https://www.kaggle.com/datasets/rawsi18/military-assets-dataset-12-classes-yolo8-format",
+        "source": "https://storage.googleapis.com/model-mgmt-snapshots/datasets-military/military-dataset.zip",
+        "invoke": {
+          "namespace": "dataset_adapter.upload_dataset"
+        },
+        "computeConfig": "dataset-deploy"
+      }
+    ]
+  }
+}
