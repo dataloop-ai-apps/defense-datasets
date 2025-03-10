@@ -43,7 +43,7 @@ class MilitaryAssetsDataset(dl.BaseServiceRunner):
 
         self.logger.info('Downloading zip file...')
         direc = os.getcwd()
-        zip_dir = os.path.join(direc, "military-dataset.zip")
+        zip_dir = os.path.join(direc, "military-dataset-2000.zip")
 
         if not os.path.exists(zip_dir):
             response = requests.get(source, timeout=100)
