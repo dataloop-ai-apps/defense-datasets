@@ -113,7 +113,7 @@ class MilitaryAssetsDataset(dl.BaseServiceRunner):
 
         with ThreadPoolExecutor(max_workers=32) as executor:
             vector_features = [
-                executor.submit(self.create_feature, item_json_data, feature_set)
+                executor.submit(self.create_feature, dataset, item_json_data, feature_set)
                 for item_json_data in vectors
             ]
 
@@ -165,7 +165,7 @@ class MilitaryAssetsDataset(dl.BaseServiceRunner):
                     )
 
     @staticmethod
-    def ensure_feature_set(dataset):
+    def ensure_feature_set(dataset: dl.Dataset):
         """
         Ensures that the feature set exists or creates a new one if not found.
 
@@ -190,13 +190,15 @@ class MilitaryAssetsDataset(dl.BaseServiceRunner):
         return feature_set
 
     @staticmethod
-    def create_feature(item_json_data, feature_set):
+    def create_feature(dataset: dl.Dataset, source_item_json_data, feature_set):
         """
         Creates a feature for a given item.
 
-        :param item_json_data: The dl.Item data in json format.
+        :param dataset: The dataset containing the items.
+        :param source_item_json_data: The source item data in json format (from the exported data).
         :param feature_set: The feature set to which the feature will be added.
         """
 
-        item = dl.Item.from_json(_json=item_json_data, client_api=dl.client_api)
-        feature_set.features.create(entity=item, value=item_json_data["itemVectors"][0]["value"])
+        source_item: dl.Item = dl.Item.from_json(_json=source_item_json_data, client_api=dl.client_api)
+        target_item = dataset.items.get(filepath=source_item.filename)
+        feature_set.features.create(entity=target_item, value=source_item_json_data["itemVectors"][0]["value"])
