@@ -118,20 +118,24 @@ class MilitaryAssetsDataset(dl.BaseServiceRunner):
             ]
 
             self.upload_progress(
-                progress, vector_features, 'Uploading feature set ...', 50, 100
+                progress=progress,
+                futures=vector_features,
+                message='Uploading feature set ...',
+                min_progress=50,
+                max_progress=100
             )
 
         self.logger.info('Dataset uploaded successfully')
 
     @staticmethod
-    def upload_progress(progress, futures, massage, min_progress, max_progress):
+    def upload_progress(progress, futures, message, min_progress, max_progress):
         """
         Tracks and logs the progress of a set of asynchronous tasks.
 
         Args:
             progress (object): An object that has an `update` method to report progress.
             futures (list): A list of futures representing the asynchronous tasks.
-            massage (str): A message to be logged and passed to the progress object.
+            message (str): A message to be logged and passed to the progress object.
             min_progress (int): The minimum progress value (usually 0).
             max_progress (int): The maximum progress value (usually 100).
 
@@ -156,8 +160,8 @@ class MilitaryAssetsDataset(dl.BaseServiceRunner):
                 if progress is not None:
                     progress.update(
                         progress=new_progress,
-                        message=massage,
-                        status=massage,
+                        message=message,
+                        status=message
                     )
 
     @staticmethod
@@ -190,9 +194,7 @@ class MilitaryAssetsDataset(dl.BaseServiceRunner):
         """
         Creates a feature for a given item.
 
-        :param key: The key identifying the item.
-        :param value: The feature value to be added.
-        :param dataset: The dataset containing the item.
+        :param item_json_data: The dl.Item data in json format.
         :param feature_set: The feature set to which the feature will be added.
         """
 
