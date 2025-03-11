@@ -66,7 +66,7 @@
       {
         "name": "Military Assets Dataset",
         "docs": "https://www.kaggle.com/datasets/rawsi18/military-assets-dataset-12-classes-yolo8-format",
-        "source": "https://storage.googleapis.com/model-mgmt-snapshots/datasets-military/military-dataset-2000.zip",
+        "source": "https://storage.googleapis.com/model-mgmt-snapshots/datasets-military/military-dataset.zip",
         "invoke": {
           "namespace": "dataset_adapter.upload_dataset"
         },
