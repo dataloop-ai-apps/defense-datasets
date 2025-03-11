@@ -1,7 +1,7 @@
 {
   "displayName": "Military Assets Dataset (12 Classes -Yolo8 Format)",
   "name": "military-assets-dataset",
-  "description": "A sample of 200 items from Military Assets Dataset (12 Classes -Yolo8 Format). This dataset is curated for object detection and classification in military-related environments.",
+  "description": "This dataset is curated for object detection and classification in military-related environments.",
   "scope": "public",
   "codebase": {
     "type": "git",
@@ -10,8 +10,10 @@
   },
   "version": "0.0.0",
   "attributes": {
-    "Provider": "Dataloop",
     "Category": "Dataset",
+    "Provider": "Dataloop",
+    "Media Type": "Image",
+    "Annotation Type": "Bounding Box",
     "License": "CC BY 4.0"
   },
   "components": {
