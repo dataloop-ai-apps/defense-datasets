@@ -6,9 +6,9 @@
   "codebase": {
     "type": "git",
     "gitUrl": "https://github.com/dataloop-ai-apps/defense-datasets.git",
-    "gitTag": "0.0.0"
+    "gitTag": "0.0.1"
   },
-  "version": "0.0.0",
+  "version": "0.0.1",
   "attributes": {
     "Category": "Dataset",
     "Provider": "Dataloop",
