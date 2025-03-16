@@ -6,7 +6,7 @@ It creates a dataset on Dataloop with a sample of 200 images, each annotated wit
 
 ![dataset_browse.png](assets/dataset_browse.png)
 
-And include CLIP embeddings over all the dataset items, enabling clustering based on their embedded representations.
+And includes CLIP embeddings over all the dataset items, enabling clustering based on their embedded representations.
 
 ![dataset_clustering.png](assets/dataset_clustering.png)
 
