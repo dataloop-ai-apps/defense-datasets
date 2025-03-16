@@ -4,9 +4,15 @@ This dataset adapter streamlines the conversion of the [Military Assets Dataset 
 into a format compatible with the Dataloop platform. 
 It creates a dataset on Dataloop with a sample of 200 images, each annotated with bounding boxes across 12 object classes.
 
+
+Add image of:
+1. Installation marketplace
+2. Image of clustering
+3. Image of dataset browse
+
 ## Installation
 
-1. Navigate to **Startline**.
+1. Navigate to **Marketplace**.
 2. Select **Datasets**.
 3. Choose the `Military Assets Dataset (12 Classes -Yolo8 Format)` from the list of available datasets.
 4. Click on **Install**.

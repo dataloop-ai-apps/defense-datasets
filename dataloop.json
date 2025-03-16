@@ -22,15 +22,14 @@
         "name": "dataset-deploy",
         "secrets": [],
         "runtime": {
-          "podType": "regular-m",
+          "podType": "regular-xs",
           "concurrency": 1,
           "autoscaler": {
             "type": "rabbitmq",
             "minReplicas": 0,
             "maxReplicas": 2,
             "queueLength": 1000
-          },
-          "preemptible": false
+          }
         }
       }
     ],
